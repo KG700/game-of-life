@@ -25,7 +25,7 @@ class App extends Component {
   newGridHandler = () => {
     let newGrid = this.updateGridWithAlive(this.state.gridStatus);
     let newGridWithStatus = this.updateGridWithLonelyCrowded(newGrid);
-    this.setState({ gridStatus: newGrid });
+    this.setState({ gridStatus: newGridWithStatus });
   }
 
   updateGridWithLonelyCrowded = (grid) => {
@@ -33,6 +33,13 @@ class App extends Component {
       return row.map((col, colIndex) => {
         const neighbours = this.findNeighbours(rowIndex, colIndex, grid);
         console.log(neighbours);
+        if (col === 'alive' && neighbours < 2) {
+          return 'lonely';
+        }
+        if (col === 'alive' && neighbours > 3) {
+          return 'crowded';
+        }
+        return col;
       })
     });
     return newGrid;
