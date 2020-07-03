@@ -13,7 +13,7 @@ const Grid = (props) => {
 
       return <td
               className={style}
-              >{cell}</td>
+              ></td>
     })
     return <tr>{theCells}</tr>;
   })
