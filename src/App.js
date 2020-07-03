@@ -24,13 +24,18 @@ class App extends Component {
 
   newGridHandler = () => {
     let newGrid = this.updateGridWithAlive(this.state.gridStatus);
-    let newGridWithStatus = newGrid.map((row, rowIndex) => {
+    let newGridWithStatus = this.updateGridWithLonelyCrowded(newGrid);
+    this.setState({ gridStatus: newGrid });
+  }
+
+  updateGridWithLonelyCrowded = (grid) => {
+    const newGrid = grid.map((row, rowIndex) => {
       return row.map((col, colIndex) => {
-        const neighbours = this.findNeighbours(rowIndex, colIndex, newGrid);
+        const neighbours = this.findNeighbours(rowIndex, colIndex, grid);
         console.log(neighbours);
       })
     });
-    this.setState({ gridStatus: newGrid });
+    return newGrid;
   }
 
   updateGridWithAlive = (grid) => {
