@@ -23,7 +23,15 @@ class App extends Component {
   }
 
   newGridHandler = () => {
-    console.log("Hello!")
+    const newGrid = this.state.gridStatus.map(row => {
+      return row.map(cell => {
+        if (Math.random() < INITIAL_PROPORTION_ALIVE) {
+          return 'alive';
+        }
+        return 'dead';
+      })
+    })
+    this.setState({ gridStatus: newGrid });
 
   }
 
