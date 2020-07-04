@@ -11,10 +11,7 @@ const INITIAL_PROPORTION_ALIVE = 0.3;
 class App extends Component {
 
   state = {
-    gridStatus: Array(NUMBER_OF_ROWS)
-                  .fill(Array(NUMBER_OF_COLUMNS)
-                    .fill('dead')
-                  ),
+    gridStatus: Array(NUMBER_OF_ROWS).fill(Array(NUMBER_OF_COLUMNS).fill('dead')),
     isRunning: false
   }
 
@@ -35,7 +32,6 @@ class App extends Component {
     const newGrid = grid.map((row, rowIndex) => {
       return row.map((col, colIndex) => {
         const neighbours = this.findNeighbours(rowIndex, colIndex, grid);
-        // console.log(`(${rowIndex}, ${colIndex}): ${neighbours}`);
         if (col === 'alive' && neighbours < 2) {
           return 'lonely';
         }
@@ -62,16 +58,13 @@ class App extends Component {
   }
 
   findNeighbours(row, col, grid) {
-    // console.log('findNeighbours')
     const neighbours = [[-1, -1], [-1, 0], [-1, 1], [0, -1], [0, 1], [1, -1], [1, 0], [1, 1]];
     let totalNeighbours = 0;
     neighbours.map(neighbour => {
-      const x = neighbour[0] + row;
-      const y = neighbour[1] + col;
-      if (x >= 0 && x < NUMBER_OF_ROWS && y >= 0 && y < NUMBER_OF_COLUMNS) {
-        if (grid[x][y] === 'alive' || grid[x][y] === 'lonely' || grid[x][y] === 'crowded') {
-          totalNeighbours += 1;
-        }
+      const x = (neighbour[0] + row + NUMBER_OF_ROWS) % NUMBER_OF_ROWS;
+      const y = (neighbour[1] + col + NUMBER_OF_COLUMNS) % NUMBER_OF_COLUMNS;
+      if (grid[x][y] === 'alive' || grid[x][y] === 'lonely' || grid[x][y] === 'crowded') {
+        totalNeighbours += 1;
       }
     })
     return totalNeighbours;
