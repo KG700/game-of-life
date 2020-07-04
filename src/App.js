@@ -4,8 +4,8 @@ import Grid from './components/Grid/Grid';
 
 import './App.css';
 
-const NUMBER_OF_ROWS = 20;
-const NUMBER_OF_COLUMNS = 30;
+const NUMBER_OF_ROWS = 30;
+const NUMBER_OF_COLUMNS = 40;
 const INITIAL_PROPORTION_ALIVE = 0.3;
 
 class App extends Component {
@@ -32,7 +32,7 @@ class App extends Component {
     const newGrid = grid.map((row, rowIndex) => {
       return row.map((col, colIndex) => {
         const neighbours = this.findNeighbours(rowIndex, colIndex, grid);
-        console.log(neighbours);
+        console.log(`(${rowIndex}, ${colIndex}): ${neighbours}`);
         if (col === 'alive' && neighbours < 2) {
           return 'lonely';
         }
@@ -47,7 +47,7 @@ class App extends Component {
 
   updateGridWithAlive = (grid) => {
     let newGrid = grid.map(row => {
-      return row.map(cell => {
+      return row.map(col => {
         if (Math.random() < INITIAL_PROPORTION_ALIVE) {
           return 'alive';
         }
@@ -63,13 +63,26 @@ class App extends Component {
     neighbours.map(neighbour => {
       const x = neighbour[0] + row;
       const y = neighbour[1] + col;
-      if (x > 0 && x < NUMBER_OF_ROWS && y > 0 && y < NUMBER_OF_COLUMNS) {
-        if (grid[x][y] === 'alive') {
+      if (x >= 0 && x < NUMBER_OF_ROWS && y >= 0 && y < NUMBER_OF_COLUMNS) {
+        if (grid[x][y] === 'alive' || grid[x][y] === 'lonely' || grid[x][y] === 'crowded') {
           totalNeighbours += 1;
         }
       }
     })
     return totalNeighbours;
+  }
+
+  stepHandler = () => {
+    let nextGrid = this.state.gridStatus.map((row, rowIndex) => {
+      return row.map((col, colIndex) => {
+        const neighbours = this.findNeighbours(rowIndex, colIndex, this.state.gridStatus);
+        if (col === 'dead' && neighbours === 3) { return 'alive' }
+        if (col === 'lonely' || col === 'crowded') { return 'dead' }
+        return col;
+      })
+    })
+    let nextGridWithStatus = this.updateGridWithLonelyCrowded(nextGrid);
+    this.setState({ gridStatus: nextGridWithStatus });
   }
 
   render() {
@@ -78,7 +91,12 @@ class App extends Component {
         <Grid cellStatus={this.state.gridStatus} />
         <button
           onClick={this.newGridHandler}
-        >NEW BOARD</button>
+          >NEW BOARD
+        </button>
+        <button
+          onClick={this.stepHandler}
+          >STEP
+        </button>
       </div>
     );
   }
