@@ -1,5 +1,6 @@
 import React from 'react';
 
+import Ball from './Ball/Ball';
 import classes from './Grid.module.css';
 
 const Grid = (props) => {
@@ -17,7 +18,9 @@ const Grid = (props) => {
 
       return <td
               className={style}
-              ></td>
+              >
+              {cell !== 'dead' ? <Ball /> : null}
+              </td>
     })
     return <tr>{theCells}</tr>;
   })
