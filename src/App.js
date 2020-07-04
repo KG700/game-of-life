@@ -76,6 +76,9 @@ class App extends Component {
     return (
       <div className="App">
         <Grid cellStatus={this.state.gridStatus} />
+        <button
+          onClick={this.newGridHandler}
+        >NEW BOARD</button>
       </div>
     );
   }
