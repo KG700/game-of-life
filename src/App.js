@@ -170,7 +170,11 @@ class App extends Component {
         >
           STOP
         </button>
-        <figure className={classes.Circle}></figure>
+
+        <figure className={[classes.Ball, classes.Lonely].join(' ')}><span className={classes.Shadow}></span></figure>
+        <figure className={[classes.Ball, classes.Alive].join(' ')}><span className={classes.Shadow}></span></figure>
+        <figure className={[classes.Ball, classes.Crowded].join(' ')}><span className={classes.Shadow}></span></figure>
+
       </div>
     );
   }
