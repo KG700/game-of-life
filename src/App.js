@@ -100,22 +100,13 @@ class App extends Component {
   }
 
   componentDidUpdate = (prevProps, prevState) => {
-    console.log('componentDidUpdate');
     const started = !prevState.isRunning && this.state.isRunning;
     const stopped = prevState.isRunning && !this.state.isRunning;
-    console.log('Has game started?')
-    console.log(started)
-    console.log('Has game stopped?')
-    console.log(stopped)
-    // let timer;
     if (started) {
-        console.log("I'm updating stepHandler because:")
-        console.log(this.state.isRunning)
       this.timer = setInterval(this.stepHandler, 1000);
     }
     if (stopped) {
       clearInterval(this.timer);
-      console.log("didn't update stepHandler");
     }
   }
 
