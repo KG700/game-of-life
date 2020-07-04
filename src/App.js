@@ -18,21 +18,23 @@ class App extends Component {
   }
 
   componentDidMount() {
-    console.log("Howdy!")
+    console.log("componentDidMount")
     this.newGridHandler();
   }
 
   newGridHandler = () => {
+    console.log('newGridHandler')
     let newGrid = this.updateGridWithAlive(this.state.gridStatus);
     let newGridWithStatus = this.updateGridWithLonelyCrowded(newGrid);
     this.setState({ gridStatus: newGridWithStatus });
   }
 
   updateGridWithLonelyCrowded = (grid) => {
+    console.log('updateGridWithLonelyCrowded')
     const newGrid = grid.map((row, rowIndex) => {
       return row.map((col, colIndex) => {
         const neighbours = this.findNeighbours(rowIndex, colIndex, grid);
-        console.log(`(${rowIndex}, ${colIndex}): ${neighbours}`);
+        // console.log(`(${rowIndex}, ${colIndex}): ${neighbours}`);
         if (col === 'alive' && neighbours < 2) {
           return 'lonely';
         }
@@ -46,6 +48,7 @@ class App extends Component {
   }
 
   updateGridWithAlive = (grid) => {
+    console.log('updateGridWithAlive')
     let newGrid = grid.map(row => {
       return row.map(col => {
         if (Math.random() < INITIAL_PROPORTION_ALIVE) {
@@ -58,6 +61,7 @@ class App extends Component {
   }
 
   findNeighbours(row, col, grid) {
+    // console.log('findNeighbours')
     const neighbours = [[-1, -1], [-1, 0], [-1, 1], [0, -1], [0, 1], [1, -1], [1, 0], [1, 1]];
     let totalNeighbours = 0;
     neighbours.map(neighbour => {
@@ -73,6 +77,7 @@ class App extends Component {
   }
 
   stepHandler = () => {
+    console.log('stepHandler')
     let nextGrid = this.state.gridStatus.map((row, rowIndex) => {
       return row.map((col, colIndex) => {
         const neighbours = this.findNeighbours(rowIndex, colIndex, this.state.gridStatus);
@@ -85,7 +90,13 @@ class App extends Component {
     this.setState({ gridStatus: nextGridWithStatus });
   }
 
+  componentDidUpdate = () => {
+    console.log('componentDidUpdate');
+    setInterval(this.stepHandler, 5000);
+  }
+
   render() {
+    console.log('render')
     return (
       <div className="App">
         <Grid cellStatus={this.state.gridStatus} />
