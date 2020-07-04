@@ -5,7 +5,7 @@
 .Grid td {
   width: 20px;
   height: 20px;
-  border: 1px solid grey;
+  /* border: 1px solid grey; */
 }
 
 .dead {
@@ -16,6 +16,7 @@
   background-color: #FDBAB4;
   animation-name: dying-lonely;
   animation-duration: 1000ms;
+  animation-fill-mode: forwards;
 }
 
 .alive {
@@ -26,6 +27,28 @@
   background-color: #FC766A;
   animation-name: dying-crowded;
   animation-duration: 1000ms;
+  animation-fill-mode: forwards;
+}
+
+.reviveLonely {
+  background-color: #184A45;
+  animation-name: reviving-lonely;
+  animation-duration: 1000ms;
+  animation-fill-mode: forwards;
+}
+
+.reviveAlive {
+  background-color: #184A45;
+  animation-name: reviving-alive;
+  animation-duration: 1000ms;
+  animation-fill-mode: forwards;
+}
+
+.reviveCrowded {
+  background-color: #184A45;
+  animation-name: reviving-crowded;
+  animation-duration: 1000ms;
+  animation-fill-mode: forwards;
 }
 
 @keyframes dying-lonely {
@@ -43,5 +66,41 @@
   }
   100% {
     background-color: #184A45;
+  }
+}
+
+@keyframes reviving-lonely {
+  0% {
+    background-color: #184A45;
+  }
+  50% {
+    background-color: #FDBAB4;
+  }
+  100% {
+    background-color: #FDBAB4;
+  }
+}
+
+@keyframes reviving-alive {
+  0% {
+    background-color: #184A45;
+  }
+  50% {
+    background-color: #B0B8B4;
+  }
+  100% {
+    background-color: #B0B8B4;
+  }
+}
+
+@keyframes reviving-crowded {
+  0% {
+    background-color: #184A45;
+  }
+  50% {
+    background-color: #FC766A;
+  }
+  100% {
+    background-color: #FC766A;
   }
 }

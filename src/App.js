@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 
 import Grid from './components/Grid/Grid';
 
-import './App.css';
+import classes from './App.module.css';
 
 const NUMBER_OF_ROWS = 30;
 const NUMBER_OF_COLUMNS = 40;
@@ -23,11 +23,35 @@ class App extends Component {
   newGridHandler = () => {
     console.log('newGridHandler')
     let newGrid = this.updateGridWithAlive(this.state.gridStatus);
-    let newGridWithStatus = this.updateGridWithLonelyCrowded(newGrid);
-    this.setState({ gridStatus: newGridWithStatus });
+    let newGridWithStatus = this.updateGridWithLonelyCrowdedRevive(newGrid);
+    // console.log(newGridWithStatus)
+    let newGridWithReviveStatuses = this.updateGridWithReviveStatuses(newGridWithStatus);
+    // console.log(newGridWithReviveStatuses)
+    this.setState({ gridStatus: newGridWithReviveStatuses });
   }
 
-  updateGridWithLonelyCrowded = (grid) => {
+  updateGridWithReviveStatuses = (grid) => {
+    const newGrid = grid.map((row, rowIndex) => {
+      return row.map((col, colIndex) => {
+        const neighbours = this.findNextNeighbours(rowIndex, colIndex, grid);
+        // console.log(neighbours)
+        // console.log(col)
+        if (col === 'revive' && neighbours < 2) {
+          return 'reviveLonely'
+        }
+        if (col === 'revive' && neighbours < 4) {
+          return 'reviveAlive'
+        }
+        if (col === 'revive' && neighbours > 3) {
+          return 'reviveCrowded';
+        }
+        return col
+      })
+    })
+    return newGrid;
+  }
+
+  updateGridWithLonelyCrowdedRevive = (grid) => {
     console.log('updateGridWithLonelyCrowded')
     const newGrid = grid.map((row, rowIndex) => {
       return row.map((col, colIndex) => {
@@ -37,6 +61,9 @@ class App extends Component {
         }
         if (col === 'alive' && neighbours > 3) {
           return 'crowded';
+        }
+        if (col === 'dead' && neighbours === 3) {
+          return 'revive';
         }
         return col;
       })
@@ -70,18 +97,35 @@ class App extends Component {
     return totalNeighbours;
   }
 
+  findNextNeighbours(row, col, grid) {
+    const neighbours = [[-1, -1], [-1, 0], [-1, 1], [0, -1], [0, 1], [1, -1], [1, 0], [1, 1]];
+    let totalNeighbours = 0;
+    neighbours.map(neighbour => {
+      const x = (neighbour[0] + row + NUMBER_OF_ROWS) % NUMBER_OF_ROWS;
+      const y = (neighbour[1] + col + NUMBER_OF_COLUMNS) % NUMBER_OF_COLUMNS;
+      if (grid[x][y] === 'alive' || grid[x][y] === 'revive') {
+        totalNeighbours += 1;
+      }
+    })
+    return totalNeighbours;
+  }
+
   stepHandler = () => {
     console.log('stepHandler')
     let nextGrid = this.state.gridStatus.map((row, rowIndex) => {
       return row.map((col, colIndex) => {
         const neighbours = this.findNeighbours(rowIndex, colIndex, this.state.gridStatus);
-        if (col === 'dead' && neighbours === 3) { return 'alive' }
+        // if (col === 'dead' && neighbours === 3) { return 'alive' }
+        if (col === 'reviveLonely') { return 'alive'}
+        if (col === 'reviveAlive') { return 'alive'}
+        if (col === 'reviveCrowded') { return 'alive'}
         if (col === 'lonely' || col === 'crowded') { return 'dead' }
         return col;
       })
     })
-    let nextGridWithStatus = this.updateGridWithLonelyCrowded(nextGrid);
-    this.setState({ gridStatus: nextGridWithStatus });
+    let nextGridWithStatus = this.updateGridWithLonelyCrowdedRevive(nextGrid);
+    let nextGridWithReviveStatuses = this.updateGridWithReviveStatuses(nextGridWithStatus);
+    this.setState({ gridStatus: nextGridWithReviveStatuses });
   }
 
   startHandler = () => {
@@ -126,6 +170,7 @@ class App extends Component {
         >
           STOP
         </button>
+        <figure className={classes.Circle}></figure>
       </div>
     );
   }
