@@ -2,14 +2,17 @@
   display: block;
   background: black;
   border-radius: 50%;
-  height: 18px;
-  width: 18px;
+  height: 20px;
+  width: 20px;
   margin: 0;
   /* background: radial-gradient(circle at 100px 100px, #FC766A, #000); */
 }
 
 .Lonely {
   background: radial-gradient(circle at 6px 6px, #FDBAB4, #000);
+  animation-name: dying-lonely;
+  animation-duration: 1000ms;
+  animation-fill-mode: forwards;
 }
 
 .Alive {
@@ -20,6 +23,30 @@
 
 .Crowded {
   background: radial-gradient(circle at 6px 6px, #FC766A, #000);
+  animation-name: dying-crowded;
+  animation-duration: 1000ms;
+  animation-fill-mode: forwards;
+}
+
+.ReviveLonely {
+  background: radial-gradient(circle at 6px 6px, #FDBAB4, #000);
+  animation-name: reviving-lonely;
+  animation-duration: 1000ms;
+  animation-fill-mode: forwards;
+}
+
+.ReviveAlive {
+  background: radial-gradient(circle at 6px 6px, #B0B8B4, #000);
+  animation-name: reviving-alive;
+  animation-duration: 1000ms;
+  animation-fill-mode: forwards;
+}
+
+.ReviveCrowded {
+  background: radial-gradient(circle at 6px 6px, #FC766A, #000);
+  animation-name: reviving-crowded;
+  animation-duration: 1000ms;
+  animation-fill-mode: forwards;
 }
 
 @keyframes bubble-anim {
@@ -40,5 +67,59 @@
   }
   97%, 100% {
     transform: scale(1);
+  }
+}
+
+@keyframes dying-lonely {
+  50% {
+    opacity: 1;
+  }
+  100% {
+    opacity: 0;
+  }
+}
+
+@keyframes dying-crowded {
+  50% {
+    opacity: 1;
+  }
+  100% {
+    opacity: 0
+  }
+}
+
+@keyframes reviving-lonely {
+  0% {
+    opacity: 0
+  }
+  50% {
+    opacity: 1;
+  }
+  100% {
+    opacity: 1;
+  }
+}
+
+@keyframes reviving-alive {
+  0% {
+    opacity: 0
+  }
+  50% {
+    opacity: 1;
+  }
+  100% {
+    opacity: 1;
+  }
+}
+
+@keyframes reviving-crowded {
+  0% {
+    opacity: 0
+  }
+  50% {
+    opacity: 1;
+  }
+  100% {
+    opacity: 1;
   }
 }

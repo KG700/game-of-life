@@ -1,5 +1,6 @@
 .Grid {
   border-collapse: collapse;
+  background-color: #184A45;
 }
 
 .Grid td {
@@ -14,9 +15,9 @@
 
 .lonely {
   background-color: #FDBAB4;
-  animation-name: dying-lonely;
+  /* animation-name: dying-lonely;
   animation-duration: 1000ms;
-  animation-fill-mode: forwards;
+  animation-fill-mode: forwards; */
 }
 
 .alive {
@@ -25,9 +26,9 @@
 
 .crowded {
   background-color: #FC766A;
-  animation-name: dying-crowded;
+  /* animation-name: dying-crowded;
   animation-duration: 1000ms;
-  animation-fill-mode: forwards;
+  animation-fill-mode: forwards; */
 }
 
 .reviveLonely {
@@ -51,25 +52,25 @@
   animation-fill-mode: forwards;
 }
 
-@keyframes dying-lonely {
+/* @keyframes dying-lonely {
   50% {
     background-color: #FDBAB4;
   }
   100% {
     background-color: #184A45;
   }
-}
+} */
 
-@keyframes dying-crowded {
+/* @keyframes dying-crowded {
   50% {
     background-color: #FC766A;
   }
   100% {
     background-color: #184A45;
   }
-}
+} */
 
-@keyframes reviving-lonely {
+/* @keyframes reviving-lonely {
   0% {
     background-color: #184A45;
   }
@@ -103,4 +104,4 @@
   100% {
     background-color: #FC766A;
   }
-}
+} */

@@ -16,10 +16,8 @@ const Grid = (props) => {
       if (cell === 'reviveAlive') { style = classes.reviveAlive }
       if (cell === 'reviveCrowded') { style = classes.reviveCrowded }
 
-      return <td
-              className={style}
-              >
-              {cell !== 'dead' ? <Ball /> : null}
+      return <td>
+              {cell !== 'dead' ? <Ball style={cell} /> : null}
               </td>
     })
     return <tr>{theCells}</tr>;
