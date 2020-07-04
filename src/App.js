@@ -14,7 +14,8 @@ class App extends Component {
     gridStatus: Array(NUMBER_OF_ROWS)
                   .fill(Array(NUMBER_OF_COLUMNS)
                     .fill('dead')
-                  )
+                  ),
+    isRunning: false
   }
 
   componentDidMount() {
@@ -90,9 +91,32 @@ class App extends Component {
     this.setState({ gridStatus: nextGridWithStatus });
   }
 
-  componentDidUpdate = () => {
+  startHandler = () => {
+    this.setState({ isRunning: true });
+  }
+
+  stopHandler = () => {
+    this.setState({ isRunning: false })
+  }
+
+  componentDidUpdate = (prevProps, prevState) => {
     console.log('componentDidUpdate');
-    setInterval(this.stepHandler, 5000);
+    const started = !prevState.isRunning && this.state.isRunning;
+    const stopped = prevState.isRunning && !this.state.isRunning;
+    console.log('Has game started?')
+    console.log(started)
+    console.log('Has game stopped?')
+    console.log(stopped)
+    // let timer;
+    if (started) {
+        console.log("I'm updating stepHandler because:")
+        console.log(this.state.isRunning)
+      this.timer = setInterval(this.stepHandler, 1000);
+    }
+    if (stopped) {
+      clearInterval(this.timer);
+      console.log("didn't update stepHandler");
+    }
   }
 
   render() {
@@ -107,6 +131,16 @@ class App extends Component {
         <button
           onClick={this.stepHandler}
           >STEP
+        </button>
+        <button
+          onClick={this.startHandler}
+        >
+          START
+        </button>
+        <button
+          onClick={this.stopHandler}
+        >
+          STOP
         </button>
       </div>
     );
