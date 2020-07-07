@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 
 import Grid from './components/Grid/Grid';
+import Backdrop from './components/UI/Backdrop/Backdrop';
 
 import classes from './App.module.css';
 
@@ -151,27 +152,17 @@ class App extends Component {
     console.log('render')
     return (
       <div className={classes.App}>
-        <div className={classes.Container}>
-          <Grid cellStatus={this.state.gridStatus} />
-        </div>
-        <button
-          onClick={this.newGridHandler}
-          >NEW BOARD
-        </button>
-        <button
-          onClick={this.stepHandler}
-          >STEP
-        </button>
-        <button
-          onClick={this.startHandler}
-        >
-          START
-        </button>
-        <button
-          onClick={this.stopHandler}
-        >
-          STOP
-        </button>
+          <Grid
+            cellStatus={this.state.gridStatus}>
+
+            <Backdrop
+              show={true}
+              refresh={this.newGridHandler}
+              step={this.stepHandler}
+              start={this.startHandler}
+              stop={this.stopHandler}
+            />
+          </Grid>
       </div>
     );
   }

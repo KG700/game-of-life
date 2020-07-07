@@ -23,11 +23,14 @@ const Grid = (props) => {
     return <tr>{theCells}</tr>;
   })
   return (
-    <table className={classes.Grid}>
-      <tbody>
-        {tableRows}
-      </tbody>
-    </table>
+    // <div className={classes.Container}>
+      <table className={classes.Grid}>
+      {props.children}
+        <tbody>
+          {tableRows}
+        </tbody>
+      </table>
+    // </div>
   )
 }
 

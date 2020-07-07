@@ -1,3 +1,12 @@
+/* .Container {
+  width: 50vw;
+  position: absolute;
+} */
+
+table {
+  position: relative;
+}
+
 .Grid {
   border-collapse: collapse;
   /* background-color: #184A45; */
