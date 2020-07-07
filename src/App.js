@@ -131,7 +131,7 @@ class App extends Component {
   }
 
   startHandler = () => {
-    this.setState({ isRunning: true });
+    this.setState({ isRunning: true, backdropShow: false });
   }
 
   stopHandler = () => {
@@ -154,7 +154,9 @@ class App extends Component {
   }
 
   leaveHoverHandler = () => {
-    this.setState({ backdropShow: false })
+    if (this.state.isRunning) {
+      this.setState({ backdropShow: false })
+    }
   }
 
   render() {
