@@ -22,9 +22,14 @@ const Grid = (props) => {
     })
     return <tr>{theCells}</tr>;
   })
+
   return (
     // <div className={classes.Container}>
-      <table className={classes.Grid}>
+      <table
+        className={classes.Grid}
+        onMouseEnter={props.onMouseEnter}
+        onMouseLeave={props.onMouseLeave}
+      >
       {props.children}
         <tbody>
           {tableRows}

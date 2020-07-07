@@ -13,7 +13,8 @@ class App extends Component {
 
   state = {
     gridStatus: Array(NUMBER_OF_ROWS).fill(Array(NUMBER_OF_COLUMNS).fill('dead')),
-    isRunning: false
+    isRunning: false,
+    backdropShow: false
   }
 
   componentDidMount() {
@@ -148,15 +149,25 @@ class App extends Component {
     }
   }
 
+  enterHoverHandler = () => {
+    this.setState({ backdropShow: true })
+  }
+
+  leaveHoverHandler = () => {
+    this.setState({ backdropShow: false })
+  }
+
   render() {
     console.log('render')
     return (
       <div className={classes.App}>
           <Grid
-            cellStatus={this.state.gridStatus}>
-
+            cellStatus={this.state.gridStatus}
+            onMouseEnter={this.enterHoverHandler}
+            onMouseLeave={this.leaveHoverHandler}
+          >
             <Backdrop
-              show={true}
+              show={this.state.backdropShow}
               refresh={this.newGridHandler}
               step={this.stepHandler}
               start={this.startHandler}
