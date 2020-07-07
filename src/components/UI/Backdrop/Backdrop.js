@@ -8,14 +8,17 @@ const Backdrop = (props) => {
     ?
       <div className={classes.Backdrop}>
         <button
-          onClick={props.refresh}
-          >NEW BOARD
-        </button>
+          className={classes.Refresh}
+          onClick={props.refresh}></button>
         {props.isRunning
         ?
-          <button onClick={props.stop}>STOP</button>
+          <button
+            className={classes.Pause}
+            onClick={props.stop}></button>
         :
-          <button onClick={props.start}>START</button>
+          <button
+            className={classes.Play}
+            onClick={props.start}></button>
         }
       </div>
     :

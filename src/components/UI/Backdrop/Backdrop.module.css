@@ -10,3 +10,37 @@
   left: 0;
   background-color: rgba(0, 0, 0, 0.25);
 }
+
+button {
+  background-color: transparent;
+  background-size: cover;
+  background-position: center;
+  display: inline-block;
+  border: none;
+  padding: 20px;
+  width: 70px;
+  /* border-radius: 900px; */
+  height: 70px;
+  transition: all 0.5s;
+  cursor: pointer;
+}
+
+button:hover {
+  width: 75px; height: 75px;
+}
+
+button:focus {
+  outline: 0;
+}
+
+.Refresh {
+  background-image: url("../../../assets/refresh-button-png-9-transparent.png");
+}
+
+.Play {
+  background-image: url("../../../assets/black-play-button-png-2-transparent.png");
+}
+
+.Pause {
+  background-image: url("../../../assets/pause-transparent-png-7-transparent.png");
+}
