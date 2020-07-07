@@ -5,7 +5,7 @@ import Backdrop from './components/UI/Backdrop/Backdrop';
 
 import classes from './App.module.css';
 
-const NUMBER_OF_ROWS = 20;
+const NUMBER_OF_ROWS = 18;
 const NUMBER_OF_COLUMNS = 35;
 const INITIAL_PROPORTION_ALIVE = 0.3;
 
