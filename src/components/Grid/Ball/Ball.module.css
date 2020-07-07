@@ -6,8 +6,8 @@
   margin: 0;
   border-radius: 50%;
   position: relative;
-  background: radial-gradient(circle at 50% 120%, #fdaca5, #fdc8c3 10%, #fc766a 80%, #642f2a 100%)
-
+  background: radial-gradient(circle at 50% 120%, #fdaca5, #fdc8c3 10%, #fc766a 80%, #642f2a 100%);
+  /* animation-name: bubble-anim; */
   /* display: block;
   background: black;
   border-radius: 50%;
@@ -32,7 +32,7 @@
 
 .Lonely {
   background: radial-gradient(circle at 50% 120%, #fdaca5, #fdc8c3 10%, #fdbab4 80%, #642f2a 100%);
-  animation-name: dying-lonely;
+  animation-name: dying;
   animation-duration: 1000ms;
   animation-fill-mode: forwards;
 }
@@ -46,32 +46,32 @@
 
 .Crowded {
   background: radial-gradient(circle at 50% 120%, #fdaca5, #fdc8c3 10%, #fc766a 80%, #642f2a 100%);
-  animation-name: dying-crowded;
-  animation-duration: 1000ms;
+  animation-name: dying;
+  animation-duration: 2s;
   animation-fill-mode: forwards;
 }
 
 .ReviveLonely {
   background: radial-gradient(circle at 50% 120%, #fdaca5, #fdc8c3 10%, #fdbab4 80%, #642f2a 100%);
   /* background: radial-gradient(circle at 6px 6px, #FDBAB4, #000); */
-  animation-name: reviving-lonely;
-  animation-duration: 1000ms;
+  animation-name: reviving;
+  animation-duration: 2s;
   animation-fill-mode: forwards;
 }
 
 .ReviveAlive {
   background: radial-gradient(circle at 50% 120%, #dfe2e1, #dfe2e1 10%, #B0B8B4 80%, #343736 100%);
   /* background: radial-gradient(circle at 6px 6px, #B0B8B4, #000); */
-  animation-name: reviving-alive;
-  animation-duration: 1000ms;
+  animation-name: reviving;
+  animation-duration: 2s;
   animation-fill-mode: forwards;
 }
 
 .ReviveCrowded {
   background: radial-gradient(circle at 50% 120%, #fdaca5, #fdc8c3 10%, #fc766a 80%, #642f2a 100%);
   /* background: radial-gradient(circle at 6px 6px, #FC766A, #000); */
-  animation-name: reviving-crowded;
-  animation-duration: 1000ms;
+  animation-name: reviving;
+  animation-duration: 2s;
   animation-fill-mode: forwards;
 }
 
@@ -96,8 +96,8 @@
   }
 }
 
-@keyframes dying-lonely {
-  30% {
+@keyframes dying {
+  0% {
     opacity: 1;
   }
   100% {
@@ -105,45 +105,9 @@
   }
 }
 
-@keyframes dying-crowded {
-  30% {
-    opacity: 1;
-  }
-  100% {
-    opacity: 0
-  }
-}
-
-@keyframes reviving-lonely {
+@keyframes reviving {
   0% {
     opacity: 0
-  }
-  50% {
-    opacity: 1;
-  }
-  100% {
-    opacity: 1;
-  }
-}
-
-@keyframes reviving-alive {
-  0% {
-    opacity: 0
-  }
-  50% {
-    opacity: 1;
-  }
-  100% {
-    opacity: 1;
-  }
-}
-
-@keyframes reviving-crowded {
-  0% {
-    opacity: 0
-  }
-  50% {
-    opacity: 1;
   }
   100% {
     opacity: 1;
