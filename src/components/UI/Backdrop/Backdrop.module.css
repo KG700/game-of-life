@@ -8,7 +8,7 @@
   z-index: 100;
   top: 0;
   left: 0;
-  background-color: rgba(0, 0, 0, 0.25);
+  background-color: rgba(0, 0, 0, 0.3);
 }
 
 button {
@@ -18,15 +18,16 @@ button {
   display: inline-block;
   border: none;
   padding: 20px;
-  width: 70px;
+  width: 130px;
   /* border-radius: 900px; */
-  height: 70px;
+  height: 130px;
+  margin: 30px;
   transition: all 0.5s;
   cursor: pointer;
 }
 
 button:hover {
-  width: 75px; height: 75px;
+  width: 150px; height: 150px;
 }
 
 button:focus {
