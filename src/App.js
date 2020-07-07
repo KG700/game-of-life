@@ -140,7 +140,7 @@ class App extends Component {
     const started = !prevState.isRunning && this.state.isRunning;
     const stopped = prevState.isRunning && !this.state.isRunning;
     if (started) {
-      this.timer = setInterval(this.stepHandler, 1000);
+      this.timer = setInterval(this.stepHandler, 1500);
     }
     if (stopped) {
       clearInterval(this.timer);

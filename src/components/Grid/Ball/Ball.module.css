@@ -7,14 +7,8 @@
   border-radius: 50%;
   position: relative;
   background: radial-gradient(circle at 50% 120%, #fdaca5, #fdc8c3 10%, #fc766a 80%, #642f2a 100%);
-  /* animation-name: bubble-anim; */
-  /* display: block;
-  background: black;
-  border-radius: 50%;
-  height: 20px;
-  width: 20px;
-  margin: 0; */
-  /* background: radial-gradient(circle at 100px 100px, #FC766A, #000); */
+  animation-duration: 2s;
+  animation-fill-mode: forwards;
 }
 
 .Ball:before {
@@ -33,46 +27,31 @@
 .Lonely {
   background: radial-gradient(circle at 50% 120%, #fdaca5, #fdc8c3 10%, #fdbab4 80%, #642f2a 100%);
   animation-name: dying;
-  animation-duration: 1000ms;
-  animation-fill-mode: forwards;
 }
 
 .Alive {
   background: radial-gradient(circle at 50% 120%, #dfe2e1, #dfe2e1 10%, #B0B8B4 80%, #343736 100%);
-  /* background: radial-gradient(circle at 6px 6px, #B0B8B4, #000); */
   animation-name: bubble-anim;
-  animation-duration: 1000ms;
 }
 
 .Crowded {
   background: radial-gradient(circle at 50% 120%, #fdaca5, #fdc8c3 10%, #fc766a 80%, #642f2a 100%);
   animation-name: dying;
-  animation-duration: 2s;
-  animation-fill-mode: forwards;
 }
 
 .ReviveLonely {
   background: radial-gradient(circle at 50% 120%, #fdaca5, #fdc8c3 10%, #fdbab4 80%, #642f2a 100%);
-  /* background: radial-gradient(circle at 6px 6px, #FDBAB4, #000); */
   animation-name: reviving;
-  animation-duration: 2s;
-  animation-fill-mode: forwards;
 }
 
 .ReviveAlive {
   background: radial-gradient(circle at 50% 120%, #dfe2e1, #dfe2e1 10%, #B0B8B4 80%, #343736 100%);
-  /* background: radial-gradient(circle at 6px 6px, #B0B8B4, #000); */
   animation-name: reviving;
-  animation-duration: 2s;
-  animation-fill-mode: forwards;
 }
 
 .ReviveCrowded {
   background: radial-gradient(circle at 50% 120%, #fdaca5, #fdc8c3 10%, #fc766a 80%, #642f2a 100%);
-  /* background: radial-gradient(circle at 6px 6px, #FC766A, #000); */
   animation-name: reviving;
-  animation-duration: 2s;
-  animation-fill-mode: forwards;
 }
 
 @keyframes bubble-anim {
