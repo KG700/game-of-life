@@ -150,8 +150,10 @@ class App extends Component {
   render() {
     console.log('render')
     return (
-      <div className="App">
-        <Grid cellStatus={this.state.gridStatus} />
+      <div className={classes.App}>
+        <div className={classes.Container}>
+          <Grid cellStatus={this.state.gridStatus} />
+        </div>
         <button
           onClick={this.newGridHandler}
           >NEW BOARD
