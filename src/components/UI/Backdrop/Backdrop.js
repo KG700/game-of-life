@@ -7,19 +7,22 @@ const Backdrop = (props) => {
     props.show
     ?
       <div className={classes.Backdrop}>
-        <button
-          className={classes.Refresh}
-          onClick={props.refresh}></button>
-        {props.isRunning
-        ?
+        <h1>GAME OF LIFE</h1>
+        <div>
           <button
-            className={classes.Pause}
-            onClick={props.stop}></button>
-        :
-          <button
-            className={classes.Play}
-            onClick={props.start}></button>
-        }
+            className={classes.Refresh}
+            onClick={props.refresh}></button>
+          {props.isRunning
+          ?
+            <button
+              className={classes.Pause}
+              onClick={props.stop}></button>
+          :
+            <button
+              className={classes.Play}
+              onClick={props.start}></button>
+          }
+        </div>
       </div>
     :
       null
