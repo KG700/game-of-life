@@ -168,6 +168,7 @@ class App extends Component {
           >
             <Backdrop
               show={this.state.backdropShow}
+              isRunning={this.state.isRunning}
               refresh={this.newGridHandler}
               step={this.stepHandler}
               start={this.startHandler}

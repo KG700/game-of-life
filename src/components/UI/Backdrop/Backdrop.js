@@ -11,24 +11,16 @@ const Backdrop = (props) => {
           onClick={props.refresh}
           >NEW BOARD
         </button>
-        <button
-          onClick={props.step}
-          >STEP
-        </button>
-        <button
-          onClick={props.start}
-        >
-          START
-        </button>
-        <button
-          onClick={props.stop}
-        >
-          STOP
-        </button>
+        {props.isRunning
+        ?
+          <button onClick={props.stop}>STOP</button>
+        :
+          <button onClick={props.start}>START</button>
+        }
       </div>
     :
       null
-    
+
   )
 }
 
