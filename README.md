@@ -10,3 +10,5 @@ These rules include:
 - And dead cell with exactly three live neighbours will become alive in the next iteration.
 
 In this version of the simulation represents cells that are alive as the shape of a ball. Each cell is one of three colours which represent the number of neighbours the cells have, to align with the rules of the game. Light pink cells have fewer than two live neighbours, grey cells have two or three live neighbours and dark pink cells have more than three live neighbours.
+
+Check it out here: https://admiring-meninsky-436249.netlify.app/
