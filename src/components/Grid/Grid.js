@@ -4,7 +4,6 @@ import Ball from './Ball/Ball';
 import classes from './Grid.module.css';
 
 const Grid = (props) => {
-  console.log('<Grid />')
   const tableRows = props.cellStatus.map((row, rowIndex) => {
     let theCells = row.map((cell, colIndex) => {
       return <td key={`(${rowIndex},${colIndex})`}>

@@ -3,8 +3,9 @@ import React from 'react';
 import classes from './Backdrop.module.css';
 
 const Backdrop = (props) => {
-  console.log('in Backdrop')
   return(
+    props.show
+    ?
     <div
       className={classes.Backdrop}
       onMouseEnter={props.onMouseEnter}
@@ -27,6 +28,8 @@ const Backdrop = (props) => {
         }
       </div>
     </div>
+    :
+    null
   )
 }
 
