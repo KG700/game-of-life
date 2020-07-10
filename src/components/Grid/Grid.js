@@ -5,13 +5,13 @@ import classes from './Grid.module.css';
 
 const Grid = (props) => {
   console.log('<Grid />')
-  const tableRows = props.cellStatus.map(row => {
-    let theCells = row.map(cell => {
-      return <td>
+  const tableRows = props.cellStatus.map((row, rowIndex) => {
+    let theCells = row.map((cell, colIndex) => {
+      return <td key={`(${rowIndex},${colIndex})`}>
               {cell !== 'dead' ? <Ball style={cell} /> : null}
               </td>
     });
-    return <tr>{theCells}</tr>;
+    return <tr key={rowIndex}>{theCells}</tr>;
   });
 
   return (
