@@ -169,16 +169,18 @@ class App extends Component {
             cellStatus={this.state.gridStatus}
             onMouseEnter={this.enterHoverHandler}
             onMouseLeave={this.leaveHoverHandler}
-          >
-            <Backdrop
-              show={this.state.backdropShow}
-              isRunning={this.state.isRunning}
-              refresh={this.newGridHandler}
-              step={this.stepHandler}
-              start={this.startHandler}
-              stop={this.stopHandler}
-            />
-          </Grid>
+          />
+          {/*</Grid>*/}
+          <Backdrop
+            show={this.state.backdropShow}
+            onMouseEnter={this.enterHoverHandler}
+            onMouseLeave={this.leaveHoverHandler}
+            isRunning={this.state.isRunning}
+            refresh={this.newGridHandler}
+            step={this.stepHandler}
+            start={this.startHandler}
+            stop={this.stopHandler}
+          />
       </div>
     );
   }

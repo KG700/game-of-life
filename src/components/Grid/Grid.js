@@ -21,7 +21,6 @@ const Grid = (props) => {
         onMouseEnter={props.onMouseEnter}
         onMouseLeave={props.onMouseLeave}
       >
-      {props.children}
         <tbody>
           {tableRows}
         </tbody>

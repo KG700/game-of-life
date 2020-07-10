@@ -6,7 +6,11 @@ const Backdrop = (props) => {
   return(
     props.show
     ?
-      <div className={classes.Backdrop}>
+      <div
+        className={classes.Backdrop}
+        onMouseEnter={props.onMouseEnter}
+        onMouseLeave={props.onMouseLeave}
+      >
         <h1>GAME OF LIFE</h1>
         <div>
           <button
