@@ -170,7 +170,6 @@ class App extends Component {
             onMouseEnter={this.enterHoverHandler}
             onMouseLeave={this.leaveHoverHandler}
           />
-          {/*</Grid>*/}
           <Backdrop
             show={this.state.backdropShow}
             onMouseEnter={this.enterHoverHandler}
