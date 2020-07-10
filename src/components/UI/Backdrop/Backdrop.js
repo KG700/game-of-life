@@ -4,7 +4,8 @@ import classes from './Backdrop.module.css';
 
 const Backdrop = (props) => {
   return(
-    props.show
+    <>
+    {props.show
     ?
       <div
         className={classes.Backdrop}
@@ -29,8 +30,8 @@ const Backdrop = (props) => {
         </div>
       </div>
     :
-      null
-
+      null}
+    </>
   )
 }
 
