@@ -148,10 +148,12 @@ class App extends Component {
   }
 
   enterHoverHandler = () => {
+    console.log("hovering")
     this.setState({ backdropShow: true })
   }
 
   leaveHoverHandler = () => {
+    console.log("not hovering")
     if (this.state.isRunning) {
       this.setState({ backdropShow: false })
     }
