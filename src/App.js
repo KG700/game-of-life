@@ -163,11 +163,6 @@ class App extends Component {
     console.log('render')
     return (
       <div className={classes.App}>
-          <Grid
-            cellStatus={this.state.gridStatus}
-            onMouseEnter={this.enterHoverHandler}
-            onMouseLeave={this.leaveHoverHandler}
-          />
           <Backdrop
             show={this.state.backdropShow}
             onMouseEnter={this.enterHoverHandler}
@@ -177,6 +172,11 @@ class App extends Component {
             step={this.stepHandler}
             start={this.startHandler}
             stop={this.stopHandler}
+          />
+          <Grid
+            cellStatus={this.state.gridStatus}
+            onMouseEnter={this.enterHoverHandler}
+            onMouseLeave={this.leaveHoverHandler}
           />
       </div>
     );
