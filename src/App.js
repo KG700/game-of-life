@@ -26,9 +26,7 @@ class App extends Component {
     console.log('newGridHandler')
     let newGrid = this.updateGridWithAlive(this.state.gridStatus);
     let newGridWithStatus = this.updateGridWithLonelyCrowdedRevive(newGrid);
-    // console.log(newGridWithStatus)
     let newGridWithReviveStatuses = this.updateGridWithReviveStatuses(newGridWithStatus);
-    // console.log(newGridWithReviveStatuses)
     this.setState({ gridStatus: newGridWithReviveStatuses });
   }
 
@@ -118,8 +116,6 @@ class App extends Component {
     console.log('stepHandler')
     let nextGrid = this.state.gridStatus.map((row, rowIndex) => {
       return row.map((col, colIndex) => {
-        // const neighbours = this.findNeighbours(rowIndex, colIndex, this.state.gridStatus);
-        // if (col === 'dead' && neighbours === 3) { return 'alive' }
         if (col === 'reviveLonely') { return 'alive'}
         if (col === 'reviveAlive') { return 'alive'}
         if (col === 'reviveCrowded') { return 'alive'}

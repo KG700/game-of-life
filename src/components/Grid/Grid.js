@@ -15,7 +15,6 @@ const Grid = (props) => {
   });
 
   return (
-    // <div className={classes.Container}>
       <table
         className={classes.Grid}
         onMouseEnter={props.onMouseEnter}
@@ -25,7 +24,6 @@ const Grid = (props) => {
           {tableRows}
         </tbody>
       </table>
-    // </div>
   )
 }
 
