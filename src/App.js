@@ -95,6 +95,7 @@ class App extends Component {
       if (grid[x][y] === 'alive' || grid[x][y] === 'lonely' || grid[x][y] === 'crowded') {
         totalNeighbours += 1;
       }
+      return 'complete';
     })
     return totalNeighbours;
   }
@@ -108,6 +109,7 @@ class App extends Component {
       if (grid[x][y] === 'alive' || grid[x][y] === 'revive') {
         totalNeighbours += 1;
       }
+      return 'complete';
     })
     return totalNeighbours;
   }
@@ -116,7 +118,7 @@ class App extends Component {
     console.log('stepHandler')
     let nextGrid = this.state.gridStatus.map((row, rowIndex) => {
       return row.map((col, colIndex) => {
-        const neighbours = this.findNeighbours(rowIndex, colIndex, this.state.gridStatus);
+        // const neighbours = this.findNeighbours(rowIndex, colIndex, this.state.gridStatus);
         // if (col === 'dead' && neighbours === 3) { return 'alive' }
         if (col === 'reviveLonely') { return 'alive'}
         if (col === 'reviveAlive') { return 'alive'}
